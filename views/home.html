@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,700&display=swap" rel="stylesheet">
+    <title>IPoPo - Home</title>
+</head>
+<body>
+    <div>
+        <h1>Home Page</h1>
+        <button onclick="toStudents()">Get Users</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function toStudents() {
+        location.href = "/users"
+    }
+</script>
+
+<style>
+    body {
+        background-color: #52B788;
+        font-family: 'Montserrat', sans-serif;
+        font-style: italic;
+        color: white;
+    }
+
+    div {
+        margin: auto;
+        padding: 10%;
+    }
+
+    button {
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        padding: 10px;
+        border: 3px solid white;
+        display: block;
+        margin-left: auto;
+        margin-top: 5%;
+        margin-right: auto;
+        font-style: italic;
+        color: white;
+        font-size: 1.5em;
+    }
+
+    button:hover {
+        font-size: 1.7em;
+    }
+
+    h1 {
+        font-size: 4em;
+        text-align: center;
+    }
+</style>
