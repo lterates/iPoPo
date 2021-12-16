@@ -1,5 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize'); 
-const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_SIC_21_22_IND1', '6RZre7bEUdsQ6PVz', {
+const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_SIC_21_22_IND1', process.env.DB_PASS, {
     host: 'www.joaoferreira.eu', 
     dialect: 'mysql'
 })
@@ -7,7 +7,7 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
 class User extends Model {}
 
 User.init({
-    nome: DataTypes.STRING, 
+    username: DataTypes.STRING, 
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     phoneNumber: DataTypes.INTEGER,

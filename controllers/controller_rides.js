@@ -1,20 +1,17 @@
-const Model = require('../models/model_users'); 
-const User = Model.User; 
+const modelUser = require('../models/model_users'); 
+const modelRide = require('../models/model_rides');
+const User = modelUser.User; 
+const Rides = modelRide.Rides; 
 
-//CREATE USER
+//CREATE RIDE -- POST
 const create = (req, res) => { 
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        phoneNumber: req.body.phoneNumber,
-        photo: req.body.photo,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        description: req.body.description,
-        birthday: req.body.birthday,
-        rating: req.body.rating,
-        history: req.body.history,
+    Rides.create({
+        price: req.body.price,
+        start_point: req.body.start_point,
+        end_point: req.body.end_point,
+        start_time: req.body.start_time,
+        start_day: req.body.start_day,
+        ride_status: req.body.ride_status,
     }).then((result) => {
         res.status(200).json(result); 
     }).catch((error) =>{
@@ -22,15 +19,15 @@ const create = (req, res) => {
     })
 }
 
-// DELETE USER
-const deleteUser = async (req, res) => {
-    let user = await User.findAll({
+// EDIT RIDE -- PUT
+const editRides = async (req, res) => {
+    let user = await Rides.findAll({
         where: {
             id: req.body.id
         }
     })
     if (user) {
-        User.destroy({
+        User.update({
                 where: {
                     id: req.body.id
                 }
@@ -58,12 +55,17 @@ const deleteUser = async (req, res) => {
     }
 };
 
-// LIST BY EMAIL
-const listByEmail = (req, res) => {
-    User.findAll({
-        where: {
-            email: req.body.email 
-        }
+// LIST BY USER -- GET
+const listByUser = (req, res) => {
+    Rides.findAll({
+        includes: [
+            {
+                model: User, 
+                where: {
+                    id: req.body.id,
+                }
+            }
+        ]
     }).then((list) => {
         res.status(200).json(list)
     }).catch((error)=> { 
@@ -71,9 +73,9 @@ const listByEmail = (req, res) => {
     })
 }
 
-// LIST BY ID
+// LIST BY ID -- GET
 const findById = (req, res) => {
-    User.findAll({
+    Rides.findAll({
         where: {
             id: req.body.id
         }
@@ -84,9 +86,9 @@ const findById = (req, res) => {
     })
 }
 
-// LIST ALL
+// LIST ALL -- GET
 const listAll = (req, res) => {
-   User.findAll().then((list) => {
+   Rides.findAll().then((list) => {
        res.status(200).json(list)
    }).catch((error)=> {
        console.log(error)
@@ -95,7 +97,7 @@ const listAll = (req, res) => {
 }
 
 exports.create = create;
-exports.deleteUser = deleteUser;
-exports.listByEmail = listByEmail; 
+exports.editRides = editRides;
+exports.listByUser = listByUser; 
 exports.listAll = listAll; 
 exports.findById = findById;

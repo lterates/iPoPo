@@ -16,7 +16,7 @@ router.route('/').get(function (req, res) {
     }
 }).post([
     body('email').notEmpty().isEmail(),
-    body('nome').notEmpty().escape(),
+    body('username').notEmpty().escape(),
     body('password').notEmpty().escape(),
     body('phoneNumber').notEmpty().isNumeric(),
     body('photo').optional(),
