@@ -1,5 +1,5 @@
 const Model = require('../models/model_messages'); 
-const Message = Model.User; 
+const Message = Model.Messages; 
 
 //SEND MESSSAGE
 const sendMessage = (req, res) => { 
@@ -9,8 +9,6 @@ const sendMessage = (req, res) => {
         content: req.body.content,
         photo: req.body.photo,
         time_sent: req.body.time_sent,
-        time_received: req.body.time_received,
-        is_read: req.body.is_read,
         is_deleted: req.body.is_deleted 
     }).then((result) => {
         res.status(200).json(result); 

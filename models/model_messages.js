@@ -12,8 +12,6 @@ Messages.init({
     content: DataTypes.STRING,
     photo: DataTypes.BLOB,
     time_sent: DataTypes.DATE,
-    time_received: DataTypes.DATE,
-    is_read: DataTypes.INTEGER,
     is_deleted: DataTypes.INTEGER
 
 }, { sequelize, modelName: 'messages'})
