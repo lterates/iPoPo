@@ -13,10 +13,10 @@ Rides.init({
     start_time: DataTypes.INTEGER,
     start_day: DataTypes.BLOB, 
     ride_status: DataTypes.STRING,
-}, { sequelize, modelName: 'user'})
+}, { sequelize, modelName: 'rides'})
 
 sequelize.sync().then().catch(error => {
-    console.log("ERROR: " + error + " SYNC USER MODELS"); 
+    console.log("ERROR: " + error + " SYNC RIDES MODELS"); 
 })
 
 exports.Rides = Rides;
