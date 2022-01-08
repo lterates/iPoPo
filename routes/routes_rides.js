@@ -22,7 +22,7 @@ router.route('/').get(function (req, res) {
     body('start_day').optional(),
     body('ride_status').notEmpty().escape(),
 ],function(req, res) { 
-    const errors = validationResult(req); 
+    const errors = validationResult(req);
     if(errors.isEmpty()) {
        controller.create(req, res); 
     } else {
@@ -31,7 +31,7 @@ router.route('/').get(function (req, res) {
 }).delete(function(req, res) { 
     if(req.body.id && req.body.id != '') {
         controller.deleteUser(req, res);
-        console.log("DELETED USER")
+        console.log("DELETED RIDE")
     }
 })
 
