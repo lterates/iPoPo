@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require('sequelize'); 
+const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_SIC_21_22_IND1', '6RZre7bEUdsQ6PVz', {
     host: 'www.joaoferreira.eu', 
     dialect: 'mysql'
@@ -7,12 +7,10 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
 class Messages extends Model {}
 
 Messages.init({
-    sender: DataTypes.INTEGER, 
+    sender: DataTypes.INTEGER,
     receiver: DataTypes.INTEGER,
     content: DataTypes.STRING,
-    photo: DataTypes.BLOB,
-    time_sent: DataTypes.DATE,
-    is_deleted: DataTypes.INTEGER
+    photo: DataTypes.BLOB
 
 }, { sequelize, modelName: 'messages'})
 
@@ -20,4 +18,4 @@ sequelize.sync().then().catch(error => {
     console.log("ERROR: " + error + " SYNC MESSAGES MODELS"); 
 })
 
-exports.User = Messages;
+exports.Messages = Messages;

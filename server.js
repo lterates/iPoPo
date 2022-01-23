@@ -3,9 +3,20 @@ require('dotenv').config();
 const app = express(); 
 const port = 3000;
 const path = require('path')
-const router_users = require('./routes/routes_users'); 
-//const router_messages = require('./routes/routes_messages'); 
-const router_rides = require('./routes/routes_rides'); 
+const router_users = require('./routes/users.routes'); 
+const router_messages = require('./routes/messages.routes'); 
+const router_rides = require('./routes/rides.routes');
+const router_auth = require('./routes/auth.routes');
+
+//*CALL ALL TABLES
+const usersModel = require('./models/users.model');
+const userRidesModel = require('./models/user_rides.model');
+const userPlacesModel = require('./models/user_places.model');
+const ridesModel = require('./models/rides.model');
+const messagesModel = require('./models/messages.model');
+const favPlacesModel = require('./models/fav_places.model');
+//*END CALLING ALL TABLES
+
 
 let options = {
     root: path.join(__dirname + /views/)
@@ -23,8 +34,9 @@ app.get('/', function(req, res) {
 })
 
 app.use('/users', router_users)
-//app.use('/messages', router_messages)
+app.use('/messages', router_messages)
 app.use('/rides', router_rides)
+app.use('/auth', router_auth);
 
 app.listen(port, () => {
     console.log('Server Running at http://localhost:' + port);

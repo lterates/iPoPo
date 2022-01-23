@@ -7,15 +7,15 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
 class User extends Model {}
 
 User.init({
-    username: DataTypes.STRING, 
+    username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     phoneNumber: DataTypes.INTEGER,
-    photo: DataTypes.BLOB, 
+    photo: DataTypes.BLOB,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     description: DataTypes.STRING,
-    birthDay: DataTypes.DATE, 
+    birthDay: DataTypes.DATE,
     rating: DataTypes.INTEGER,
     score: DataTypes.FLOAT,
 

@@ -10,8 +10,8 @@ Rides.init({
     price: DataTypes.FLOAT, 
     start_point: DataTypes.STRING,
     end_point: DataTypes.STRING,
-    start_time: DataTypes.INTEGER,
-    start_day: DataTypes.BLOB, 
+    start_time: DataTypes.STRING,
+    start_day: DataTypes.STRING, 
     ride_status: DataTypes.STRING,
 }, { sequelize, modelName: 'rides'})
 
