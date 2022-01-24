@@ -4,6 +4,9 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
     dialect: 'mysql'
 })
 
+const usersModel = require('./users.model');
+const User = usersModel.User;
+
 class Messages extends Model {}
 
 Messages.init({
@@ -11,8 +14,10 @@ Messages.init({
     receiver: DataTypes.INTEGER,
     content: DataTypes.STRING,
     photo: DataTypes.BLOB
-
 }, { sequelize, modelName: 'messages'})
+
+Messages.belongsTo(User, {foreignKey: "sender"});
+Messages.belongsTo(User, {foreignKey: "receiver"});
 
 sequelize.sync().then().catch(error => {
     console.log("ERROR: " + error + " SYNC MESSAGES MODELS"); 

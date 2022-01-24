@@ -1,6 +1,9 @@
 const Model = require('../models/users.model');
 const User = Model.User;
 
+const paymentModel = require('../models/payment_method.model')
+const PaymentMethod = paymentModel.PaymentMethod;
+
 //GET LOGGED USER
 const getLoggedUser = (req, res) => {
     User.findOne({
@@ -25,7 +28,8 @@ const updateUser = (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         description: req.body.description,
-        birthDay: req.body.birthDay
+        birthDay: req.body.birthDay,
+        college: req.body.college
     }, {
         where: {
             id: req.loggedUserId
@@ -37,7 +41,20 @@ const updateUser = (req, res) => {
     }).catch((error) => {
         res.status(400).send(error);
     })
+};
+
+const addPaymentMethod = (req, res) => {
+    PaymentMethod.create({
+        card_number: req.body.card_number,
+        cvv: req.body.cvv,
+        expiration: req.body.expiration
+    }).then((result) => {
+        res.status(200).json(result);
+    }).catch((error) => {
+        res.status(400).send(error);
+    })
 }
 
 exports.getLoggedUser = getLoggedUser;
 exports.updateUser = updateUser;
+exports.addPaymentMethod = addPaymentMethod;

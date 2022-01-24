@@ -1,7 +1,7 @@
 const express = require('express'); 
 require('dotenv').config();
 const app = express(); 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const path = require('path')
 const router_users = require('./routes/users.routes'); 
 const router_messages = require('./routes/messages.routes'); 
@@ -15,6 +15,7 @@ const userPlacesModel = require('./models/user_places.model');
 const ridesModel = require('./models/rides.model');
 const messagesModel = require('./models/messages.model');
 const favPlacesModel = require('./models/fav_places.model');
+const paymentMethodModel = require('./models/payment_method.model');
 //*END CALLING ALL TABLES
 
 

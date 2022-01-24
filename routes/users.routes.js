@@ -25,7 +25,8 @@ router.route('/').get(function (req, res) {
     body("firstName").optional().escape(),
     body("lastName").optional().escape(),
     body("description").optional().escape(),
-    body("birthDay").isDate().optional()
+    body("birthDay").isDate().optional(),
+    body("college").optional().escape()
 ], function (req, res) {
     const error = validationResult(req);
     if (error.isEmpty()) {

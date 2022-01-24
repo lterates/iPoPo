@@ -29,8 +29,8 @@ const addNewPlace = (req, res) => {
         place_adress: req.body.place_adress
     }).then((result) => {
         UserPlaces.create({
-            user_id: req.body.user_id,
-            place_id: result.id
+            userId: req.body.user_id,
+            favPlaceId: result.id
         })
         res.status(200).json(result);
     }).catch((error) => {
@@ -70,8 +70,8 @@ const deletePlace = (req, res) => {
         }
         UserPlaces.destroy({
             where: {
-                user_id: req.body.user_id,
-                place_id: req.params.id
+                userId: req.body.user_id,
+                favPlaceId: req.params.id
             }
         })
         res.status(200).json({

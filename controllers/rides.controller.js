@@ -13,7 +13,7 @@ const createRide = (req, res) => {
         end_point: req.body.end_point,
         start_time: req.body.start_time,
         start_day: req.body.start_day,
-        ride_status: "Em espera"
+        ride_status: "Disponível"
     }).then((result) => {
         UserRides.create({
             userType: "Driver",
@@ -79,7 +79,8 @@ const findById = (req, res) => {
 const listAvailableRides = (req, res) => {
     Rides.findAll({
         where: {
-            ride_status: "Em espera"
+            ride_status: "Disponível",
+            end_point: req.body.end_point
         }
     }).then((list) => {
         res.status(200).json(list)
@@ -92,7 +93,7 @@ const joinRide = async (req, res) => {
     const ride = await Rides.findOne({
         where: {
             id: req.params.rideId,
-            ride_status: "Em espera"
+            ride_status: "Disponível"
         }
     })
     if (ride != null) {
@@ -111,6 +112,10 @@ const joinRide = async (req, res) => {
                 res.status(200).json(result);
             }).catch((error) => {
                 res.status(400).send(error);
+            })
+        } else {
+            res.status(400).send({
+                message: "Utilizador já se encontra nesta viagem!"
             })
         }
     }

@@ -28,7 +28,8 @@ router.route('/signUp').post([
     body("firstName").optional().escape(),
     body("lastName").optional().escape(),
     body("description").optional().escape(),
-    body("birthDay").isDate().optional()
+    body("birthDay").isDate().optional(),
+    body("college").notEmpty().escape()
 ], function (req, res) {
     const error = validationResult(req);
     if (error.isEmpty()) {

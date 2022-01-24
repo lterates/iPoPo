@@ -38,6 +38,7 @@ const signIn = async (req, res) => {
             id: user.id,
             username: user.username,
             email: user.email,
+            college: user.college,
             accessToken: token
         });
     } catch (err) {
@@ -68,7 +69,8 @@ const signUp = async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             description: req.body.description,
-            birthDay: req.body.birthDay
+            birthDay: req.body.birthDay,
+            college: req.body.college
         });
         return res.status(200).json({
             message: "User was registered successfully!"

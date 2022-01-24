@@ -16,9 +16,9 @@ User.init({
     lastName: DataTypes.STRING,
     description: DataTypes.STRING,
     birthDay: DataTypes.DATE,
+    college: DataTypes.STRING,
     rating: DataTypes.INTEGER,
     score: DataTypes.FLOAT,
-
 }, { sequelize, modelName: 'user'})
 
 sequelize.sync().then().catch(error => {

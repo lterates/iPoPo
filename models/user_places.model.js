@@ -4,12 +4,17 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
     dialect: 'mysql'
 })
 
+const usersModel = require('./users.model');
+const favPlacesModel = require('./fav_places.model');
+const User = usersModel.User;
+const FavPlaces = favPlacesModel.FavPlaces;
+
 class User_Places extends Model {}
 
-User_Places.init({
-    user_id: DataTypes.INTEGER,
-    place_id: DataTypes.INTEGER
-}, { sequelize, modelName: 'users_places'})
+User_Places.init({}, { sequelize, modelName: 'users_places'})
+
+User_Places.belongsTo(User);
+User_Places.belongsTo(FavPlaces);
 
 sequelize.sync().then().catch(error => {
     console.log("ERROR: " + error + " SYNC USERS PLACES MODELS"); 

@@ -13,8 +13,6 @@ const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_S
 class User_Ride extends Model {}
 
 User_Ride.init({
-    // user_id: DataTypes.INTEGER,
-    // ride_id: DataTypes.INTEGER,
     userType: DataTypes.STRING
 }, {
     sequelize,
