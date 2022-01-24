@@ -52,7 +52,7 @@ const signUp = async (req, res) => {
     try {
         let user = await Users.findOne({
             where: {
-                email: req.params.email
+                email: req.body.email
             }
         });
         if (user) {
