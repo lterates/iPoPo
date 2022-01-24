@@ -61,16 +61,16 @@ const signUp = async (req, res) => {
             });
         }
         user = await Users.create({
-            username: req.params.username,
-            email: req.params.email,
-            password: bcrypt.hashSync(req.params.password, 8),
-            phoneNumber: req.params.phoneNumber,
-            photo: req.params.photo,
-            firstName: req.params.firstName,
-            lastName: req.params.lastName,
-            description: req.params.description,
-            birthDay: req.params.birthDay,
-            college: req.params.college
+            username: req.body.username,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 8),
+            phoneNumber: req.body.phoneNumber,
+            photo: req.body.photo,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            description: req.body.description,
+            birthDay: req.body.birthDay,
+            college: req.body.college
         });
         return res.status(200).json({
             message: "User was registered successfully!"
