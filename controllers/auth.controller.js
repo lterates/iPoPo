@@ -10,14 +10,14 @@ const signIn = async (req, res) => {
     try {
         let user = await Users.findOne({
             where: {
-                email: req.params.email
+                email: req.body.email
             }
         });
         if (!user) return res.status(404).json({
             message: "User Not found."
         });
         const passwordIsValid = await bcrypt.compareSync(
-            req.params.password, user.password.toString()
+            req.body.password, user.password.toString()
         );
 
         if (!passwordIsValid) {

@@ -6,20 +6,17 @@ const {
 } = require('express-validator');
 const controller = require('../controllers/auth.controller');
 
-router.route('/signIn').post(
-    // [
-    //     body('email').notEmpty().isEmail(),
-    //     body('password').notEmpty()
-    // ]
-    // ,
-    function (req, res) {
-        const error = validationResult(req);
-        if (error.isEmpty()) {
-            controller.signIn(req, res);
-        } else {
-            res.status(400).send(error);
-        }
-    })
+router.route('/signIn').post([
+    body('email').notEmpty().isEmail(),
+    body('password').notEmpty()
+], function (req, res) {
+    const error = validationResult(req);
+    if (error.isEmpty()) {
+        controller.signIn(req, res);
+    } else {
+        res.status(400).send(error);
+    }
+})
 
 router.route('/signUp').post([
     body("username").notEmpty().escape(),
