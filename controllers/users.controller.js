@@ -47,7 +47,8 @@ const addPaymentMethod = (req, res) => {
     PaymentMethod.create({
         card_number: req.body.card_number,
         cvv: req.body.cvv,
-        expiration: req.body.expiration
+        expiration: req.body.expiration,
+        userId: req.loggedUserId
     }).then((result) => {
         res.status(200).json(result);
     }).catch((error) => {
@@ -55,6 +56,19 @@ const addPaymentMethod = (req, res) => {
     })
 }
 
+const getPaymentMethod = (req, res) => {
+    PaymentMethod.findAll({
+        where: {
+            userId: req.loggedUserId
+        }
+    }).then((result) => {
+        res.status(200).json(result);
+    }).catch((error) => {
+        res.status(400).send(error)
+    })
+}
+
 exports.getLoggedUser = getLoggedUser;
 exports.updateUser = updateUser;
 exports.addPaymentMethod = addPaymentMethod;
+exports.getPaymentMethod = getPaymentMethod;

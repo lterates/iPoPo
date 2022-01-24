@@ -12,8 +12,8 @@ class PaymentMethod extends Model {}
 PaymentMethod.init({
     card_number: DataTypes.INTEGER,
     cvv: DataTypes.INTEGER,
-    expiration: DataTypes.DATE
-}, { sequelize, modelName: 'user'})
+    expiration: DataTypes.STRING
+}, { sequelize, modelName: 'paymentMethod'})
 
 PaymentMethod.belongsTo(User)
 

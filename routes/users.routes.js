@@ -35,6 +35,32 @@ router.route('/').get(function (req, res) {
             usersController.updateUser(req, res)
         }
     }
+});
+
+router.route('/paymentMethod').get(function (req, res) {
+    const error = validationResult(req);
+    if (error.isEmpty()) {
+        authController.verifyToken(req, res);
+        if (req.loggedUserId != null) {
+            usersController.getPaymentMethod(req, res)
+        }
+    } else {
+        res.status(400).send(error);
+    }
+}).post([
+    body("card_number").isNumeric().notEmpty(),
+    body("cvv").isNumeric().notEmpty(),
+    body("expiration").escape().notEmpty()
+], function (req, res) {
+    const error = validationResult(req);
+    if (error.isEmpty()) {
+        authController.verifyToken(req, res);
+        if (req.loggedUserId != null) {
+            usersController.addPaymentMethod(req, res)
+        }
+    } else {
+        res.status(400).send(error);
+    }
 })
 
 router.route('/places').post([
