@@ -19,18 +19,20 @@ router.route('/signIn').post([
         }
     })
 
-router.route('/signUp').post([
-    body("username").notEmpty().escape(),
-    body("email").notEmpty().isEmail(),
-    body("password").notEmpty().escape(),
-    body("phoneNumber").isNumeric().optional(),
-    body("photo").optional(),
-    body("firstName").optional().escape(),
-    body("lastName").optional().escape(),
-    body("description").optional().escape(),
-    body("birthDay").isDate().optional(),
-    body("college").notEmpty().escape()
-], function (req, res) {
+router.route('/signUp').post(
+//     [
+//     body("username").notEmpty().escape(),
+//     body("email").notEmpty().isEmail(),
+//     body("password").notEmpty().escape(),
+//     body("phoneNumber").isNumeric().optional(),
+//     body("photo").optional(),
+//     body("firstName").optional().escape(),
+//     body("lastName").optional().escape(),
+//     body("description").optional().escape(),
+//     body("birthDay").escape().optional(),
+//     body("college").notEmpty().escape()
+// ], 
+function (req, res) {
     const error = validationResult(req);
     if (error.isEmpty()) {
         controller.signUp(req, res);
