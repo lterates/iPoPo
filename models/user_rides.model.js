@@ -1,3 +1,10 @@
+/**
+ * @typedef User_Ride
+ * @property {integer} userId.required
+ * @property {integer} rideId.required
+ * @property {string} usertype.required
+ */
+
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
 const usersModel = require('./users.model');

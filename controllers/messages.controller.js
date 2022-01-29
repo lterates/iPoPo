@@ -7,7 +7,7 @@ const Users = modelUsers.User;
 const getUsersMessages = (req, res) => {
     Message.findAll({
         where: {
-            sender: req.body.id
+            sender: req.loggedUserId
         }
     }).then((result) => {
         res.status(200).json(result)
@@ -19,7 +19,7 @@ const getUsersMessages = (req, res) => {
 //SEND MESSSAGE
 const sendMessage = (req, res) => {
     Message.create({
-        sender: req.body.sender,
+        sender: req.loggedUserId,
         receiver: req.params.receiverId,
         content: req.body.content,
         photo: req.body.photo

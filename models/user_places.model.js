@@ -1,3 +1,10 @@
+/**
+ * @typedef User_Places
+ * @property {integer} userId.required
+ * @property {integer} placeId.required
+ */
+
+
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_SIC_21_22_IND1', process.env.DB_PASS, {
     host: 'www.joaoferreira.eu', 

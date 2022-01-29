@@ -24,12 +24,13 @@ const getPlaceById = (req, res) => {
 
 //ADD NEW FAVORITE PLACE -- POST
 const addNewPlace = (req, res) => {
+    console.log(req.loggedUser)
     FavPlaces.create({
         place_name: req.body.place_name,
         place_adress: req.body.place_adress
     }).then((result) => {
         UserPlaces.create({
-            userId: req.body.user_id,
+            userId: req.loggedUserId,
             favPlaceId: result.id
         })
         res.status(200).json(result);
@@ -70,7 +71,7 @@ const deletePlace = (req, res) => {
         }
         UserPlaces.destroy({
             where: {
-                userId: req.body.user_id,
+                userId: req.loggedUserId,
                 favPlaceId: req.params.id
             }
         })

@@ -3,6 +3,12 @@ require('dotenv').config();
 const app = express(); 
 const port = process.env.PORT || 3000;
 const path = require('path')
+
+// Swagger
+const expressSwagger = require('express-swagger-generator')(app); 
+const options = require('./swagger_conf'); 
+expressSwagger(options); 
+
 const router_users = require('./routes/users.routes'); 
 const router_messages = require('./routes/messages.routes'); 
 const router_rides = require('./routes/rides.routes');
@@ -19,13 +25,13 @@ const paymentMethodModel = require('./models/payment_method.model');
 //*END CALLING ALL TABLES
 
 
-let options = {
+let options2 = {
     root: path.join(__dirname + /views/)
 }
 
 app.use(express.json()); 
 app.get('/', function(req, res) {
-    res.sendFile("home.html", options, function(err) {
+    res.sendFile("home.html", options2, function(err) {
         if (err) {
             console.log("ERROR: " + err)
         } else {

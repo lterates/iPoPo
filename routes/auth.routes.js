@@ -6,6 +6,14 @@ const {
 } = require('express-validator');
 const controller = require('../controllers/auth.controller');
 
+/**
+ * @route POST /auth/signIn
+ * @group Authentication
+ * @param {object} object.body - User's Credentials - eg. {"email": "maria@gmail.com", "password": "12345"}
+ * @returns {object} 200 - An object of the logged user with the token
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ */
 router.route('/signIn').post([
     body('email').notEmpty().isEmail(),
     body('password').notEmpty()
@@ -18,6 +26,13 @@ router.route('/signIn').post([
     }
 })
 
+/**
+ * @route POST /auth/signUp
+ * @group Authentication
+ * @param {object} object.body - User's Credentials - eg. {"email": "maria@gmail.com", "username": "maria123", "password": "12345", "firsName": "Maria", "lastName": "Teixeira", "college": "ESE"}
+ * @returns {object} 200 - A message confirmation that the user was created
+ * @returns {Error} 400 - Unexpected error
+ */
 router.route('/signUp').post([
     body("username").notEmpty().escape(),
     body("email").notEmpty().isEmail(),

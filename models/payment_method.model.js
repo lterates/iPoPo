@@ -1,3 +1,10 @@
+/**
+ * @typedef PaymentMethod
+ * @property {integer} card_number.required
+ * @property {integer} cvv.required
+ * @property {string} expiration.required
+ */
+
 const { Sequelize, Model, DataTypes } = require('sequelize'); 
 const sequelize = new Sequelize.Sequelize('joaoferr_SIC_21_22_IND1', 'joaoferr_SIC_21_22_IND1', process.env.DB_PASS, {
     host: 'www.joaoferreira.eu', 
